@@ -17,11 +17,15 @@ def build_poly(x, degree):
     >>> build_poly(np.array([0.0, 1.5]), 2)
     array([[1.  , 0.  , 0.  ],
            [1.  , 1.5 , 2.25]])
-    """    
+    """
     # ***************************************************
-    # COPY YOUR CODE FROM EX03 HERE
+    # INSERT YOUR CODE HERE
     # polynomial basis function: TODO
     # this function should return the matrix formed
     # by applying the polynomial basis to the input data
     # ***************************************************
-    raise NotImplementedError
+    phi = np.copy(x)
+    for i in range(2, degree + 1):
+        phi = np.vstack((phi, x**i))
+    phi = np.vstack((np.ones(x.shape[0]), phi))
+    return phi.T
